@@ -1,1 +1,2 @@
-# GroupProject1
+# Project-One
+First group project
