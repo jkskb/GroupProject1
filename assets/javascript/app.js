@@ -1,6 +1,5 @@
-$("#find-weather").on("click", function(event) {
 
-    event.preventDefault();
+
 
     // Here we grab the text from the input box
     //var place = $("#weather-input").val(); - COULD BE USED IF WE WANT TO ADD A BOX TO ADD ADDRESSf
@@ -76,6 +75,4 @@ $("#find-weather").on("click", function(event) {
 
 
 
-    // -----------------------------------------------------------------------
-    return false;
-  });
+    // ----------------------------------------------------------------------
