@@ -22,7 +22,7 @@
 
         var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
         
-        $(".city").html("<h1> " + response.name + " </h1>");
+        $(".city").html("<h2> " + response.name + " </h2>");
         $(".current").text("Current: " + response.weather[0].description);
         $(".icon").html("<img src='" + iconUrl  + "'>");
         $(".currentWind").text("Wind Speed: " + response.wind.speed + " mph");
