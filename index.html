@@ -1,169 +1,66 @@
 <!DOCTYPE html>
-<html>
+
+<html mankg="en">
+
 <head>
-  <title>Project One</title>
+  <!-- Required meta tags -->
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Project One</title>
+
+  <!-- ALL style links-->
+  <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+  
+  <!--jquery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+  <!-- firebase-->
+  <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
 
-<style>
-    
-/* Button used to open the contact form - fixed at the bottom of the page */
- .open-button {
-          background-color: #555;
-          color: white;
-          padding: 10px 15px;
-          border: none;
-          cursor: pointer;
-          opacity: 0.8;
-          position: middle;
-          bottom: 23px;
-          right: 28px;
-          width: 280px;
-        }
-        
- /* The popup form - hidden by default */
-.form-popup {
-          display: none;
-          position: fixed;
-          bottom: 0;
-          right: 15px;
-          border: 3px solid #f1f1f1;
-          z-index: 9;
-        }
-        
-/* Add styles to the form container */
-.form-container {
-          max-width: 300px;
-          padding: 10px;
-          background-color: white;
-        }
-        
-/* Full-width input fields */
- .form-container input[type=text], .form-container input[type=password] {
-          width: 100%;
-          padding: 15px;
-          margin: 5px 0 22px 0;
-          border: none;
-          background: #f1f1f1;
-        }
-        
-/* When the inputs get focus, do something */
-.form-container input[type=text]:focus, .form-container input[type=password]:focus {
-          background-color: #ddd;
-          outline: none;
-        }
-        
- /* Set a style for the submit/login button */
-.form-container .btn {
-          background-color: #4CAF50;
-          color: white;
-          padding: 16px 20px;
-          border: none;
-          cursor: pointer;
-          width: 100%;
-          margin-bottom:10px;
-          opacity: 0.8;
-        }
-        
- /* Add a red background color to the cancel button */
- .form-container .cancel {
-          background-color: red;
-        }
-        
-/* Add some hover effects to buttons */
-        .form-container .btn:hover, .open-button:hover {
-          opacity: 1;
-        }
+  <!--moment.ms-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 
-/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
-@media (max-width: 600px) {
-    nav, article {
-        width: 100%;
-        height: auto;
-    }
-}     
-* {
-    box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-}
-
-/* Create three unequal columns that floats next to each other */
-.column {
-    float: left;
-    padding: 10px;
-}
-
-/* Left and right column */
-.column.side {
-    width: 25%;
-}
-
-/* Middle column */
-.column.middle {
-    width: 50%;
-}
-
-/* Clear floats after the columns */
-.row:after {
-    content: "";
-    display: table;
-    clear: both;
-}
-.box {
-    height: 300px;
-    width:200px;
-    border:2px solid black;
-    float: center right;
-}
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
-    .column.side, .column.middle {
-        width: 100%;
-    }
-}
-
-.footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color:black;
-   color: white;
-   text-align: center;
-}
- </style>
 </head>
 
 
 
 <body>
-<div class="jumbotron text-center" style="background-color:#F44336;colorblack;height:150px;">
+<div class="jumbotron text-center banner">
   <h1>User driven disaster occurance website</h1>
   
   <div style="background-color:black;color:black;padding:2px;">
       
   
-<button class="open-button" onclick="openForm()">Open Form</button>
+  <button class="open-button" onclick="openForm()">Open Form</button>
 
 <div class="form-popup" id="myForm">
   <form action="/action_page.php" class="form-container">
-    <h2>Register</h2>
+    <h2>Business Status</h2>
 
-    <label for="Name"><b>Full Name</b></label>
-    <input type="text" placeholder="Enter name" name="username" required>
+    <label for="Name"><b>Business Name</b></label>
+    <input type="text" placeholder="Enter name of business" name="text" required>
+
+    
+
+    <label class="radio-inline">
+    <input type="radio" name="optradio">Gas
+    </label>
+    <label class="radio-inline">
+    <input type="radio" name="optradio">Grocery
+    </label>
+    <label class="radio-inline">
+    <input type="radio" name="optradio">Other
+    </label>
+    <br>
 
     <label for="add"><b>Address</b></label>
-    <input type="text" placeholder="Enter Address" name="address" required>
+    <input type="text" placeholder="Enter Address and/or zip code" name="address" required>
 
-    <label for="phone number"><b>Phone Number</b></label>
-    <input type="text" placeholder="Enter Number" name="number" required>
+    <label for="comment"><b>Comments</b></label>
+    <textarea class="form-control" type="text" rows="4" placeholder="Please provide as much applicable information as possible (open hours, available supplies, price of gas)" name="Comments" required></textarea>
 
     <button type="submit" class="btn">submit</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
@@ -171,22 +68,40 @@ body {
 </div>
 </div>
 
+<!--Weather Feed Box-->
 <div class="row">
      <div class="column side">
-          <h2>Weather Feed</h2>
-          <p></p>
+        <div class="city"></div>
+        <h6><span id="date"></h6>
+        <br>
+        <div class="current" id="period"></div>
+        <div class="currentWind" id="wind"></div>
+        <div class="icon" id="icon"></div>
+        <br>
+        <div class="three" id="period"></div>
+        <div class="threeWind" id="wind"></div>
+        <div class="threeIcon"id="icon"></div>
+        <br>
+        <div class="six" id="period"></div>
+        <div class="sixWind" id="wind"></div>
+        <div class="sixIcon" id="icon"></div>
+        <br>
+        <div class="nine" id="period"></div>
+        <div class="nineWind" id="wind"></div>
+        <div class="nineIcon" id="icon"></div>
+        <p></p>
     </div>
 
 
     <div class="column middle">
-          <h3>Map of Open Businesses</h3>
+          <h2>Map of Open Businesses</h2>
           <p></p>
     </div>
     
     <div class="column side">
            
         <div class="box">
-            <h4>News</h4>
+            <h2>News</h2>
             <br>
             <marquee direction="up">
                     <div class="jumbotron text-center">  
@@ -220,6 +135,9 @@ function closeForm() {
 </script>
 
  </div>
+
+ <!-- link to javascrip file -->
+<script src="./assets/javascript/app.js"></script>
 
 </body>
 </html>
