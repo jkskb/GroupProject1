@@ -1,35 +1,134 @@
-<!--includes bootstrap & JS -->
-
-<!doctype html>
+<!DOC html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Project One</title>
+
+    <!-- ALL style links-->
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+        
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- firebase-->
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
 
 
-      <div class="city"></div>
-      <div class="current"></div>
-      <div class="icon"></div>
-      <div class="currentWind"></div>
-      <div class="three"></div>
-      <div class="threeIcon"></div>
-      <div class="threeWind"></div>
-      <div class="six"></div>
-      <div class="sixIcon"></div>
-      <div class="sixWind"></div>
-      <div class="nine"></div>
-      <div class="nineIcon"></div>
-      <div class="nineWind"></div>
+  </head>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript"></script>
+  <body>
+    <div class="jumbotron text-center banner">
+      <h1>Disaster Source</h1>
+      
+      <div style="background-color:black;color:black;padding:2px;">
+          
+      
+      <button class="open-button" onclick="openForm()">Contact Us</button>
+    
+    <div class="form-popup" id="myForm">
+      <form action="/action_page.php" class="form-container">
+        <h2>Contact Us</h2>
+    
+        <label for="First Name"><b>First Name</b></label>
+        <input type="text" name="text" required>
+        <br>
+
+        <label for="Last Name"><b>Last Name</b></label>
+        <input type="text" name="text" required>
+        <br>
+
+        
+        <label for="Zip Code"><b>Zip Code</b></label>
+        <input type="zip" name="text" required>
+        <br>
+    
+        <label for="add"><b>Email</b></label>
+        <input type="email" name="email" required>
+    
+        <label for="comment"><b>Comments</b></label>
+        <textarea class="form-control" type="text" rows="4" placeholder="Please explain your question, issue or suggestion." name="Comments" required></textarea>
+    
+        <button type="submit" class="btn">submit</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+      </form>
+    </div>
+    </div>
+    
+    <!--Weather Feed Box-->
+    <div class="row">
+          <div class="column side">
+            <div class="city"></div>
+            <h6><span id="date"></h6>
+            <br>
+            <div class="current" id="period"></div>
+            <div class="currentWind" id="wind"></div>
+            <div class="icon" id="icon"></div>
+            <br>
+            <div class="three" id="period"></div>
+            <div class="threeWind" id="wind"></div>
+            <div class="threeIcon"id="icon"></div>
+            <br>
+            <div class="six" id="period"></div>
+            <div class="sixWind" id="wind"></div>
+            <div class="sixIcon" id="icon"></div>
+            <br>
+            <div class="nine" id="period"></div>
+            <div class="nineWind" id="wind"></div>
+            <div class="nineIcon" id="icon"></div>
+            <p></p>
+        </div>
+    
+    
+        <div class="column middle">
+              <h2>Map of Open Businesses</h2>
+              <p></p>
+        </div>
+        
+        <div class="column side">
+                
+            <div class="box">
+                <h2>News</h2>
+                <br>
+                <marquee direction="up">
+                        <div class="jumbotron text-center">  
+                    *some news here.
+                    <br>
+                    *other news here.
+                </marquee>
+            </div>
+    
+                <p></p>
+            </div>
+        </div>
+    </div>     
+          
+    
+    
+    <div class="footer">
+            <button class="open-button" onclick="FAQs and About()">FAQs & About</button>
+    </div>
+    
+    
+    
+    <script>
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+    
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+    </script>
+    
+      </div>
+    
+      <!-- link to javascrip file -->
     <script src="./assets/javascript/app.js"></script>
-
-  </body>
-</html>
+    
+    </body>
+    </html>
