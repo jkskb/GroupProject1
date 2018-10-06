@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Project One</title>
+
+    <!-- ALL style links-->
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/faq.css">
+        
+    <!--jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- firebase-->
+    <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+    
+    <!--font link-->
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+
+
+  </head>
+
+  <body>
+    <div class="jumbotron text-center banner">
+      <h1>Disaster Source</h1>
+      
+      <div style="background-color:black;color:black;padding:2px;">  
+    
+      <button class="open-button" onclick="openForm()">Contact Us</button>
+    
+      <div class="form-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+          <h2>Contact Us</h2>
+      
+          <label for="Name"><b>First Name</b></label>
+          <input type="text" name="text" required>
+          <br>
+          
+          <label for="Zip Code"><b>Zip Code</b></label>
+          <input type="text" name="text" required>
+          <br>
+      
+          <label for="add"><b>Email</b></label>
+          <input type="text" name="email" required>
+      
+          <label for="comment"><b>Comments</b></label>
+          <textarea class="form-control" type="text" rows="4" placeholder="Please explain your question, issue or suggestion." name="Comments" required></textarea>
+      
+          <button type="button" class="btn" onclick="closeForm()">Submit</button>
+          <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form>
+      </div>
+    </div>
+
+            
+    <div class="faq_container">
+      <div class="faq">
+        <div class="faq_question">Why "Disaster Source"?</div>
+          <div class="faq_answer_container">
+            <div class="faq_answer">We've created this site to provide crowd-sourced business status information during times when statuses are changing faster than standard technology sources are able to update. 
+            <p></p>
+            Living in an area of the country that has experienced a number of hurricanes, we are aware of the need for immediate information building up to, during and immediately following a storm. In these times, the usual sources for shop hours become unreliable. Additionally, this is not a time when you can count on water, gas or food to be in stock.  We also find that during and immediately following a storm that there is a desire to get out of the house, even if it's just to wander around the grocery store. While you want to get our, leaving your home and just wandering isn't safe nor practicle.</div>
+          </div>
+        </div>        
+      </div>
+    </div>
+
+    <div class="faq_container">
+      <div class="faq">
+        <div class="faq_question">Is the information accurate?</div>
+          <div class="faq_answer_container">
+            <div class="faq_answer">We are relying in our users to provide the best information and most information available. While we can't guarantee accuracy, we hope that our users find this access to information as helpful as we do and that will provide the motivation to update as accuratly.
+            <p></p>
+            Keep in mind, during disaster a situation statuses are changing rapidly. Look at the timestamp on the comments. We've provided that to help with your decision making.</div>
+          </div>
+        </div>        
+      </div>
+    </div>  
+
+    <div class="faq_container">
+      <div class="faq">
+        <div class="faq_question">Help! This information provided is incorrect for the store I'm at...</div>
+          <div class="faq_answer_container">
+            <div class="faq_answer">Please, return to our homepage and click on "Submit Business Update". This will pull up a form, which you can fill out with the current business status. The comments you provide will be added to the previous comments. We keep the comments displayed in sequential order, with the most recent appearing first.
+          </div>
+        </div>        
+      </div>
+    </div>  
+
+    <div class="faq_container">
+      <div class="faq">
+        <div class="faq_question">What information should I provide?</div>
+          <div class="faq_answer_container">
+            <div class="faq_answer">Provide any information that you would find helpful. 
+          </div>
+        </div>        
+      </div>
+    </div> 
+          
+    
+    
+    <div class="footer">
+            <button class="open-button" onclick="window.location.href='file:///C:/Users/jkskb/Desktop/GitHub/GroupProject1/index.html'">Home</button>
+    </div>
+      
+    <script>
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+    
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+
+ $(document).ready(function() {
+ 
+    $('.faq_question').click(function() {
+ 
+        if ($(this).parent().is('.open')){
+            $(this).closest('.faq').find('.faq_answer_container').animate({'height':'0'},500);
+            $(this).closest('.faq').removeClass('open');
+ 
+            }else{
+                var newHeight =$(this).closest('.faq').find('.faq_answer').height() +'px';
+                $(this).closest('.faq').find('.faq_answer_container').animate({'height':newHeight},500);
+                $(this).closest('.faq').addClass('open');
+            }
+ 
+    });
+ 
+});
+</script>
+    
+      </div>
+    
+      <!-- link to javascrip file -->
+
+    
+    </body>
+    </html>
