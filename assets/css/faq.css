@@ -1,6 +1,6 @@
 /*FAQS*/
 .faq_question {
-    margin: 20px 200px 0px 200px;
+    margin: 20px 250px 0px 250px;
     display: inline-block;
     cursor: pointer;
     font-weight: bold;
@@ -9,7 +9,7 @@
 }
  
 .faq_answer_container {
-    margin: 0px 200px 0px 220px;
+    margin: 0px 270px 0px 270px;
     height: 0px;
     font-size: 15px;
     overflow: hidden;
