@@ -1,48 +1,60 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Project One</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
 
+<html mankg="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <title>Project One</title>
+
+  <!-- ALL style links-->
   <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+  
+  <!--jquery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <!-- firebase-->
+  <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+
+  <!--moment.ms-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
 
 </head>
 
 
 
 <body>
-<div class="jumbotron text-center" style="background-color:#F44336;colorblack;height:150px;">
+<div class="jumbotron text-center banner">
   <h1>User driven disaster occurance website</h1>
   
   <div style="background-color:black;color:black;padding:2px;">
       
   
-<button class="open-button" onclick="openForm()">Open Form</button>
+  <button class="open-button" onclick="openForm()">Open Form</button>
 
 <div class="form-popup" id="myForm">
   <form action="/action_page.php" class="form-container">
-    <h3>Business Status</h3>
-
-
-      <label class="radio-inline">
-        <input type="radio" name="optradio" checked>Gas
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="optradio">Grocery
-      </label>
-      <label class="radio-inline">
-        <input type="radio" name="optradio">Restaurant
-      </label>
+    <h2>Business Status</h2>
 
     <label for="Name"><b>Business Name</b></label>
     <input type="text" placeholder="Enter name of business" name="text" required>
+
+    
+
+    <label class="radio-inline">
+    <input type="radio" name="optradio">Gas
+    </label>
+    <label class="radio-inline">
+    <input type="radio" name="optradio">Grocery
+    </label>
+    <label class="radio-inline">
+    <input type="radio" name="optradio">Other
+    </label>
+    <br>
 
     <label for="add"><b>Address</b></label>
     <input type="text" placeholder="Enter Address and/or zip code" name="address" required>
@@ -59,35 +71,37 @@
 <!--Weather Feed Box-->
 <div class="row">
      <div class="column side">
-          <div class="city"></div>
-          <div class="current" id="period"></div>
-          <div class="icon"></div>
-          <div class="currentWind"></div>
-          <br>
-          <div class="three" id="period"></div>
-          <div class="threeIcon"></div>
-          <div class="threeWind"></div>
-          <br>
-          <div class="six" id="period"></div>
-          <div class="sixIcon" id="period"></div>
-          <div class="sixWind"></div>
-          <br>
-          <div class="nine" id="period"></div>
-          <div class="nineIcon"></div>
-          <div class="nineWind"></div>
-          <p></p>
+        <div class="city"></div>
+        <h6><span id="date"></h6>
+        <br>
+        <div class="current" id="period"></div>
+        <div class="currentWind" id="wind"></div>
+        <div class="icon" id="icon"></div>
+        <br>
+        <div class="three" id="period"></div>
+        <div class="threeWind" id="wind"></div>
+        <div class="threeIcon"id="icon"></div>
+        <br>
+        <div class="six" id="period"></div>
+        <div class="sixWind" id="wind"></div>
+        <div class="sixIcon" id="icon"></div>
+        <br>
+        <div class="nine" id="period"></div>
+        <div class="nineWind" id="wind"></div>
+        <div class="nineIcon" id="icon"></div>
+        <p></p>
     </div>
 
 
     <div class="column middle">
-          <h3>Map of Open Businesses</h3>
+          <h2>Map of Open Businesses</h2>
           <p></p>
     </div>
     
     <div class="column side">
            
         <div class="box">
-            <h4>News</h4>
+            <h2>News</h2>
             <br>
             <marquee direction="up">
                     <div class="jumbotron text-center">  
