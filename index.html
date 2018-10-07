@@ -12,13 +12,16 @@
   <!-- ALL style links-->
   <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
   
   <!--jquery-->
+  <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <!-- firebase-->
-  <script src="https://www.gstatic.com/firebasejs/5.5.2/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
 
   <!--moment.ms-->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
@@ -44,28 +47,16 @@
     <h2>Business Status</h2>
 
     <label for="Name"><b>Business Name</b></label>
-    <input type="text" placeholder="Enter name of business" name="text" required>
-
-    
-
-    <label class="radio-inline">
-    <input type="radio" name="optradio">Gas
-    </label>
-    <label class="radio-inline">
-    <input type="radio" name="optradio">Grocery
-    </label>
-    <label class="radio-inline">
-    <input type="radio" name="optradio">Other
-    </label>
+    <input id="business-name-input" type="text" placeholder="Enter name of business" name="text" required>
     <br>
 
     <label for="add"><b>Address</b></label>
-    <input type="text" placeholder="Enter Address and/or zip code" name="address" required>
+    <input id="business-address-input"  type="text" placeholder="Enter Address and/or zip code" name="address" required>
 
     <label for="comment"><b>Comments</b></label>
-    <textarea class="form-control" type="text" rows="4" placeholder="Please provide as much applicable information as possible (open hours, available supplies, price of gas)" name="Comments" required></textarea>
+    <textarea  id="user-comment-input" class="form-control" type="text" rows="4" placeholder="Please provide as much applicable information as possible (open hours, available supplies, price of gas)" name="Comments" required></textarea>
 
-    <button type="submit" class="btn">submit</button>
+    <button class="btn btn-primary" id="add-news-btn">Submit</button>
     <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
   </form>
 </div>
@@ -104,42 +95,37 @@
     <div class="column side">
            
         <div class="box">
-            <h2>News</h2>
+            <h2>Business Updates</h2>
             <br>
-            <marquee direction="up">
-                    <div class="jumbotron text-center">  
-                *some news here.
-                <br>
-                *other news here.
+            <marquee direction="down" behavior="scroll">
+                    <div class="jumbotron text-center">
+                        <br>
             </marquee>
         </div>
 
             <p></p>
         </div>
     </div>
-</div>     
-     
-
+</div> 
 
 <div class="footer">
         <button class="open-button" onclick="window.location.href='file:/C:/Users/jkskb/Desktop/GitHub/GroupProject1/faq.html'">FAQs & Contact</button>
 </div>
 
+<script type="text/javascript">
 
-
-<script>
 function openForm() {
     document.getElementById("myForm").style.display = "block";
 }
-
+function submitForm() {
+    document.getElementById("mySubmit").newslist.toggle("show");
+}
 function closeForm() {
     document.getElementById("myForm").style.display = "none";
 }
 </script>
 
- </div>
-
- <!-- link to javascrip file -->
+ <!-- link to javascript file -->
 <script src="./assets/javascript/app.js"></script>
 
 </body>
