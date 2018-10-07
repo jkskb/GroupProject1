@@ -97,6 +97,10 @@ marquee .jumbotron {
     font-size: 10px;
 }
 
+h6 {
+    margin-bottom: 20px;
+}
+
 #icon {
     margin: -10px;
 }
