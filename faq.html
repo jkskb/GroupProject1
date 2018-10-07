@@ -36,21 +36,21 @@
         <form action="/action_page.php" class="form-container">
           <h2>Contact Us</h2>
       
-          <label for="Name"><b>First Name</b></label>
-          <input type="text" name="text" required>
+          <label for="Name"><b>Name</b></label>
+          <input id="contact-name-input" type="text" name="text" required>
           <br>
           
           <label for="Zip Code"><b>Zip Code</b></label>
-          <input type="text" name="text" required>
+          <input id="contact-zip-input" type="text" name="text" required>
           <br>
       
           <label for="add"><b>Email</b></label>
-          <input type="text" name="email" required>
+          <input id="contact-email-input" type="text" name="email" required>
       
           <label for="comment"><b>Comments</b></label>
-          <textarea class="form-control" type="text" rows="4" placeholder="Please explain your question, issue or suggestion." name="Comments" required></textarea>
+          <textarea class="form-control" id="contact-comment-input" type="text" rows="4" placeholder="Please explain your question, issue or suggestion." name="Comments" required></textarea>
       
-          <button type="button" class="btn" onclick="closeForm()">Submit</button>
+          <button type="button" class="btn" id="add-contact-btn" onclick="closeForm()">Submit</button>
           <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form>
       </div>
@@ -126,39 +126,9 @@
     <div class="footer">
             <button class="open-button" onclick="window.location.href='file:///C:/Users/jkskb/Desktop/GitHub/GroupProject1/index.html'">Home</button>
     </div>
-      
-    <script>
-    function openForm() {
-        document.getElementById("myForm").style.display = "block";
-    }
-    
-    function closeForm() {
-        document.getElementById("myForm").style.display = "none";
-    }
 
- $(document).ready(function() {
- 
-    $('.faq_question').click(function() {
- 
-        if ($(this).parent().is('.open')){
-            $(this).closest('.faq').find('.faq_answer_container').animate({'height':'0'},500);
-            $(this).closest('.faq').removeClass('open');
- 
-            }else{
-                var newHeight =$(this).closest('.faq').find('.faq_answer').height() +'px';
-                $(this).closest('.faq').find('.faq_answer_container').animate({'height':newHeight},500);
-                $(this).closest('.faq').addClass('open');
-            }
- 
-    });
- 
-});
-</script>
+    <!-- link to javascript file -->
+    <script src="./assets/javascript/app.js"></script>
     
-      </div>
-    
-      <!-- link to javascrip file -->
-
-    
-    </body>
-    </html>
+  </body>
+</html>

@@ -34,59 +34,69 @@
 
 
 <body>
+<!-- banner -->
 <div class="jumbotron text-center banner">
   <h1>Disaster Source</h1>
   
   <div style="background-color:black;color:black;padding:2px;">
       
-  
+  <!-- business update popup form -->
   <button class="open-button" onclick="openForm()">Submit Business Update</button>
 
+</div>
+
 <div class="form-popup" id="myForm">
-  <form action="/action_page.php" class="form-container">
-    <h2>Business Status</h2>
+    <form action="/action_page.php" class="form-container">
+<h2>Business Status</h2>
+    <form>
+        <label for="Name"><b>Business Name</b></label>
+        <input id="business-name-input" type="text" placeholder="Enter name of business" name="text" required>
 
-    <label for="Name"><b>Business Name</b></label>
-    <input id="business-name-input" type="text" placeholder="Enter name of business" name="text" required>
-    <br>
+        <br>
 
-    <label for="add"><b>Address</b></label>
-    <input id="business-address-input"  type="text" placeholder="Enter Address and/or zip code" name="address" required>
+        <label for="add"><b>Address</b></label>
+        <input id="business-address-input"  type="text" placeholder="Enter Address and/or zip code" name="address" required>
 
-    <label for="comment"><b>Comments</b></label>
-    <textarea  id="user-comment-input" class="form-control" type="text" rows="4" placeholder="Please provide as much applicable information as possible (open hours, available supplies, price of gas)" name="Comments" required></textarea>
+        <label for="comment"><b>Comments</b></label>
+        <textarea  id="user-comment-input" class="form-control" type="text" rows="4" placeholder="Please provide as much applicable information as possible (open hours, available supplies, price of gas)" name="Comments" required></textarea>
 
-    <button class="btn btn-primary" id="add-news-btn">Submit</button>
-    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-  </form>
+        <button class="btn btn-primary" id="add-news-btn" onclick="closeForm()">Submit</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form> 
 </div>
-</div>
+
 
 <!--Weather Feed Box-->
 <div class="row">
-     <div class="column side">
+    <div class="column side">
+
         <div class="city"></div>
         <h6><span id="date"></h6>
-        <br>
+
         <div class="current" id="period"></div>
         <div class="currentWind" id="wind"></div>
         <div class="icon" id="icon"></div>
+
         <br>
+
         <div class="three" id="period"></div>
         <div class="threeWind" id="wind"></div>
         <div class="threeIcon"id="icon"></div>
+
         <br>
+        
         <div class="six" id="period"></div>
         <div class="sixWind" id="wind"></div>
         <div class="sixIcon" id="icon"></div>
+
         <br>
+        
         <div class="nine" id="period"></div>
         <div class="nineWind" id="wind"></div>
         <div class="nineIcon" id="icon"></div>
-        <p></p>
     </div>
 
-
+<!-- Map of Business with markers added by users -->
     <div class="column middle">
           <h2>Map of Open Businesses</h2>
           <p></p>
@@ -108,22 +118,10 @@
     </div>
 </div> 
 
+<!-- Footer -->
 <div class="footer">
         <button class="open-button" onclick="window.location.href='file:/C:/Users/jkskb/Desktop/GitHub/GroupProject1/faq.html'">FAQs & Contact</button>
 </div>
-
-<script type="text/javascript">
-
-function openForm() {
-    document.getElementById("myForm").style.display = "block";
-}
-function submitForm() {
-    document.getElementById("mySubmit").newslist.toggle("show");
-}
-function closeForm() {
-    document.getElementById("myForm").style.display = "none";
-}
-</script>
 
  <!-- link to javascript file -->
 <script src="./assets/javascript/app.js"></script>
