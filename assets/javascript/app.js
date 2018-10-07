@@ -1,6 +1,3 @@
-
-
-
     // Here we grab the text from the input box
     //var place = $("#weather-input").val(); - COULD BE USED IF WE WANT TO ADD A BOX TO ADD ADDRESSf
     // var place = "29.7604,95.3698";
@@ -77,6 +74,75 @@
 
     });
 
+// Initialize Firebase for Business information data storage
+var config = {
+    apiKey: "AIzaSyB5nrNRrvIK7EtU8khc4JJb4vs9kJ_huHI",
+    authDomain: "dsbusupdates.firebaseapp.com",
+    databaseURL: "https://dsbusupdates.firebaseio.com",
+    projectId: "dsbusupdates",
+    storageBucket: "dsbusupdates.appspot.com",
+    messagingSenderId: "640603408577"
+};
 
+firebase.initializeApp(config);
+
+var database = firebase.database();
+
+// Button for adding business update
+$("#add-news-btn").on("click", function(event) {
+    event.preventDefault();
+
+  // Grabs user input
+  var busName = $("#business-name-input").val().trim();
+  //var busType = $('input[name = "optradio"]:checked').value;
+  var busAdd = $("#business-address-input").val().trim();
+  var busComm = $("#user-comment-input").val().trim();
+
+  // Creates local "temporary" object for holding employee data
+  var newBus = {
+    name: busName,
+    address: busAdd,
+    comment: busComm
+  };
+
+  // Uploads employee data to the database
+  database.ref().push(newBus);
+
+  // Logs everything to console
+  console.log(busName.name);
+  console.log(busAdd.address); 
+  console.log(busComm.comment);
+
+  // Clears all of the text-boxes
+  $("#business-name-input").val("");
+  $("#business-address-input").val("");
+  $("#user-comment-input").val("");
+});
+
+//Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+database.ref().on("child_added", function(childSnapshot) {
+    console.log(childSnapshot.val());
+  
+    // Store into a variable.
+    var busName = childSnapshot.val().name;
+    var busAdd = childSnapshot.val().address;
+    var busComm = childSnapshot.val().comment;
+  
+    // console log business info
+    console.log(busName);
+    console.log(busAdd);
+    console.log(busComm);
+
+    // Create the new row
+    var newRow = $("marquee").append(
+      $("<tj>").text(busName),
+      $("<li>").text(busAdd),
+      $("<li>").text(busComm)
+  );
+
+  
+  // Append the new row to the table
+  $("#business-feed > tbody").append(newRow);
+});
 
     // ----------------------------------------------------------------------
