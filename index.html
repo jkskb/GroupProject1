@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
 
   <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/googleMaps.css">
   
   <!--jquery-->
   <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
@@ -34,97 +35,107 @@
 
 
 <body>
-<!-- banner -->
-<div class="jumbotron text-center banner">
-  <h1>Disaster Source</h1>
-  
-  <div style="background-color:black;color:black;padding:2px;">
-      
-  <!-- business update popup form -->
-  <button class="open-button" onclick="openForm()">Submit Business Update</button>
-
-</div>
-
-<div class="form-popup" id="myForm">
-    <form action="/action_page.php" class="form-container">
-<h2>Business Status</h2>
-    <form>
-        <label for="Name"><b>Business Name</b></label>
-        <input id="business-name-input" type="text" placeholder="Enter name of business" name="text" required>
-
-        <br>
-
-        <label for="add"><b>Address</b></label>
-        <input id="business-address-input"  type="text" placeholder="Enter Address and/or zip code" name="address" required>
-
-        <label for="comment"><b>Comments</b></label>
-        <textarea  id="user-comment-input" class="form-control" type="text" rows="4" placeholder="Please provide as much applicable information as possible (open hours, available supplies, price of gas)" name="Comments" required></textarea>
-
-        <button class="btn btn-primary" id="add-news-btn" onclick="closeForm()">Submit</button>
-        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
-    </form> 
-</div>
-
-
-<!--Weather Feed Box-->
-<div class="row">
-    <div class="column side">
-
-        <div class="city"></div>
-        <h6><span id="date"></h6>
-
-        <div class="current" id="period"></div>
-        <div class="currentWind" id="wind"></div>
-        <div class="icon" id="icon"></div>
-
-        <br>
-
-        <div class="three" id="period"></div>
-        <div class="threeWind" id="wind"></div>
-        <div class="threeIcon"id="icon"></div>
-
-        <br>
-        
-        <div class="six" id="period"></div>
-        <div class="sixWind" id="wind"></div>
-        <div class="sixIcon" id="icon"></div>
-
-        <br>
-        
-        <div class="nine" id="period"></div>
-        <div class="nineWind" id="wind"></div>
-        <div class="nineIcon" id="icon"></div>
-    </div>
-
-<!-- Map of Business with markers added by users -->
-    <div class="column middle">
-          <h2>Map of Open Businesses</h2>
-          <p></p>
-    </div>
+    <!-- banner -->
+    <div class="jumbotron text-center banner">
+    <h1>Disaster Source</h1>
     
-    <div class="column side">
-           
-        <div class="box">
-            <h2>Business Updates</h2>
-            <br>
-            <marquee direction="down" behavior="scroll">
-                    <div class="jumbotron text-center">
-                        <br>
-            </marquee>
-        </div>
+    <div style="background-color:black;color:black;">
+        
+    <!-- business update popup form -->
+    <button class="open-button" onclick="openForm()">Submit Business Update</button>
 
-            <p></p>
-        </div>
     </div>
-</div> 
 
-<!-- Footer -->
-<div class="footer">
-        <button class="open-button" onclick="window.location.href='file:/C:/Users/jkskb/Desktop/GitHub/GroupProject1/faq.html'">FAQs & Contact</button>
-</div>
+    <div class="form-popup" id="myForm">
+        <form action="/action_page.php" class="form-container">
+    <h2>Business Status</h2>
+        <form>
+            <label for="Name"><b>Business Name</b></label>
+            <input id="business-name-input" type="text" placeholder="Enter name of business" class="print" name="text" required>
 
- <!-- link to javascript file -->
-<script src="./assets/javascript/app.js"></script>
+            <br>
+
+            <label for="add"><b>Address</b></label>
+            <input id="business-address-input"  class="print" type="text" placeholder="Enter Address and/or zip code" name="address" required>
+
+            <label for="comment"><b>Comments</b></label>
+            <textarea  id="user-comment-input" value="print" class="form-control print" type="text" rows="4" placeholder="Please provide as much applicable information as possible (open hours, available supplies, price of gas)" name="Comments" required></textarea>
+
+            <button class="btn btn-primary" id="add-news-btn" onclick="closeForm()">Submit</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+        </form> 
+    </div>
+
+
+    <!--Weather Feed Box-->
+    <div class="row">
+        <div class="column side">
+
+            <div class="city"></div>
+            <h6><span id="date"></h6>
+
+            <div class="current" id="period"></div>
+            <div class="currentWind" id="wind"></div>
+            <div class="icon" id="icon"></div>
+
+            <br>
+
+            <div class="three" id="period"></div>
+            <div class="threeWind" id="wind"></div>
+            <div class="threeIcon"id="icon"></div>
+
+            <br>
+            
+            <div class="six" id="period"></div>
+            <div class="sixWind" id="wind"></div>
+            <div class="sixIcon" id="icon"></div>
+
+            <br>
+            
+            <div class="nine" id="period"></div>
+            <div class="nineWind" id="wind"></div>
+            <div class="nineIcon" id="icon"></div>
+        </div>
+
+    <!-- Map of Business with markers added by users -->
+        <div class="column middle">
+            <h2>Map of Open Businesses</h2>
+            <p></p>
+            <div id="map-canvas"></div>
+            <div id="directions-canvas"></div>
+            <div id="places"></div>
+            <div id="more"></div>
+            <div id="map"></div>
+
+        </div>
+        
+        <div class="column side">
+            
+            <div class="box">
+                <h2>Business Updates</h2>
+                <br>
+                <marquee direction="down" behavior="scroll">
+                        <div class="jumbotron text-center">
+                        <ul></ul>
+                </marquee>
+            </div>
+
+                <p></p>
+            </div>
+        </div>
+    </div> 
+
+    <!-- Footer -->
+    <div class="footer">
+            <button class="open-button" onclick="window.location.href='file:/C:/Users/jkskb/Desktop/GitHub/GroupProject1/faq.html'">FAQs & Contact</button>
+    </div>
+
+    <!-- link to javascript file -->
+    <script src="./assets/javascript/app.js"></script>
+
+    <!-- link to googleMaps file -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPwAsU2hCjtgCnieRhfwVk7BvOIi7OW2U&callback=initMap"
+    async defer></script>
 
 </body>
 </html>
