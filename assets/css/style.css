@@ -1,6 +1,8 @@
 body {
     font-family: 'Oswald', sans-serif;
+    color: black;
 }
+
 .banner {
     padding-top:10px;
     background-color:#CF3721;
@@ -15,7 +17,6 @@ h1 {
 marquee .jumbotron {
     background-color: white;
 }
-
 
 /* Button used to open the contact form - fixed at the bottom of the page */
 .open-button {
@@ -68,7 +69,6 @@ marquee .jumbotron {
     
 /* Set a style for the submit/login button */
 .form-container .btn {
-    background-color: #258039;
     color: white;
     padding: 16px 20px;
     border: none;
@@ -153,7 +153,6 @@ marquee {
 
 .footer {
    position: fixed;
-   left: 0;
    bottom: 0;
    width: 100%;
    background-color:black;
@@ -186,15 +185,9 @@ marquee {
     border-bottom:1px dotted #555; 
 }
 
-/* Google maps style */
+/* CSS for Google Map */
 #map {
     height: 500px;
-  }
-
-#right-panel {
-    font-family: 'Roboto','sans-serif';
-    line-height: 30px;
-    padding-left: 10px;
 }
 
 #right-panel select, #right-panel input {
@@ -231,8 +224,6 @@ li:nth-child(odd) {
     width: 100%;
     margin: 5px 0 0 0;
 }
-
-
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
