@@ -1,72 +1,57 @@
-// STEPS IN JAVASCRIPT
-// 1. Open Wether API
-// 2. Current Weather Forecast
-// 3. Future Weather forecast (3, 6, and 9 hours out)
-// 4. Initialize Firebase for Business information data storage
-// 5. Create controls for Busness update form
-// 6. Create Firebase event for adding business to the database and html when a user makes an entry
-// 7. Create controls for contact form
-// 8. Create Firebase event for adding contact info to the database
-// 9. Open and close button functions
-// 10. function to animate questions and answers on click
-// 11. Google Maps API
-
-//_______________________________________________________________________________________
-
-// 1. Open Weather API
+  
+    // Here we grab the text from the input box
+    //var place = $("#weather-input").val(); - COULD BE USED IF WE WANT TO ADD A BOX TO ADD ADDRESSf
+    // var place = "29.7604,95.3698";
 var APIKey = "166a433c57516f51dfab1f7edaed8413"; 
 
-//contruct URL Query for current forecast
+
 var queryURL1 = "https://api.openweathermap.org/data/2.5/weather?" + "q=houston,us&units=imperial&appid="+ APIKey;
 
-//contruct URL Query for future forecast
-var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?" + "q=houston,us&units=imperial&appid="+ APIKey;
-
-// 2. Current Weather Forecast
 $.ajax({
     url: queryURL1,
     method: "GET"
 }).then(function(response) {
 
-    // Use Moment.js to add time and date to weather report
     var now = moment();
-    // console.log("DATE:" + moment(now).format("ddd[,] MMM Do") + " CURRENT TIME: " + moment(now).format("hh:mm a"));
+    console.log("DATE:" + moment(now).format("ddd[,] MMM Do") + " CURRENT TIME: " + moment(now).format("hh:mm a"));
 
     $("#date").text(now.format("ddd[,] MMM Do[ ― ]h:mm a"));
 
-    // Use icon codes supplied in JSON to add weather icons to weather report
     var iconCode = response.weather[0].icon;
 
     var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
     
-    // Adding current forecast to our weather report
     $(".city").html("<h2> " + response.name + " </h2>");
     $(".current").text("Current ― " + response.weather[0].description);
     $(".icon").html("<img src='" + iconUrl  + "'>");
     $(".currentWind").text("Wind Speed: " + response.wind.speed + " mph");
-  
+
+    // console.log("Current: " + response.weather[0].description);
+    // console.log$("<img src='" + iconUrl  + "'>");
+    // console.log("Wind Speed: " + response.wind.speed);
+
+
 });
 
-// 3. Future Weather forecast (3, 6, and 9 hours out)
+// Here we construct our URL for future forecast
+var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?" + "q=houston,us&units=imperial&appid="+ APIKey;
+
 $.ajax({
     url: queryURL2,
     method: "GET"
 }).then(function(response) {
 
-    // Use Moment.js to add times of future foecasts to weather report
     var three = moment().add(3, 'hours');
     var six = moment().add(6, 'hours');
     var nine = moment().add(9, 'hours');
-    // console.log("3 Hours From Now:" + moment(three).format("hh:mm a")); 
-    // console.log("6 Hours From Now:" + moment(six).format("hh:mm a")); 
-    // console.log("9 Hours From Now:" + moment(nine).format("hh:mm a")); 
+    console.log("3 Hours From Now:" + moment(three).format("hh:mm a")); 
+    console.log("6 Hours From Now:" + moment(six).format("hh:mm a")); 
+    console.log("9 Hours From Now:" + moment(nine).format("hh:mm a")); 
 
-    // Use icon codes supplied in JSON to add weather icons to weather report
     var iconCode = response.list[1].weather[0].icon;
 
     var iconUrl = "http://openweathermap.org/img/w/" + iconCode + ".png";
     
-    // Adding current forecast to our weather report
     $(".three").text(three.format("ddd[, ]h:mm a[ ― ]") + response.list[0].weather[0].description);
     $(".threeIcon").html("<img src='http://openweathermap.org/img/w/" + response.list[0].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
     $(".threeWind").text("Wind Speed: " + response.list[0].wind.speed + " mph");
@@ -77,9 +62,20 @@ $.ajax({
     $(".nineIcon").html("<img src='http://openweathermap.org/img/w/" + response.list[2].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
     $(".nineWind").text("Wind Speed: " + response.list[2].wind.speed + " mph");
 
+
+    // console.log("3 Hours: " + response.list[0].weather[0].description);
+    // console.log("<img src='http://openweathermap.org/img/w/" + response.list[0].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
+    // console.log("3 hrs Wind Speed: " + response.list[0].wind.speed);
+    // console.log("6 Hours: " + response.list[1].weather[0].description);
+    // console.log("<img src='http://openweathermap.org/img/w/" + response.list[1].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
+    // console.log("6 hrs Wind Speed: " + response.list[1].wind.speed);
+    // console.log("9 Hours: " + response.list[2].weather[0].description);
+    // console.log("<img src='http://openweathermap.org/img/w/" + response.list[2].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
+    // console.log("9 hrs Wind Speed: " + response.list[2].wind.speed);
+
 });
 
-// 4. Initialize Firebase for Business information data storage
+// Initialize Firebase for Business information data storage
 var config = {
     apiKey: "AIzaSyB5nrNRrvIK7EtU8khc4JJb4vs9kJ_huHI",
     authDomain: "dsbusupdates.firebaseapp.com",
@@ -93,63 +89,62 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-// 5. Create controls for Busness update form
+// Button for adding business update
 $("#add-news-btn").on("click", function(event) {
     event.preventDefault();
 
-    // Grabs user input
-    var busName = $("#business-name-input").val().trim();
-    var busAdd = $("#business-address-input").val().trim();
-    var busComm = $("#user-comment-input").val().trim();
-   
-    // Creates local "temporary" object for holding business data
-    var newBus = {
-        name: busName,
-        address: busAdd,
-        comment: busComm
-    };
+  // Grabs user input
+  var busName = $("#business-name-input").val().trim();
+  var busAdd = $("#business-address-input").val().trim();
+  var busComm = $("#user-comment-input").val().trim();
 
-    // Uploads business data to the database
-    database.ref().push(newBus);
-    
-    // Logs everything to console
-    console.log(busName.name);
-    console.log(busAdd.address); 
-    console.log(busComm.comment);
-    
-    // Clears all of the text-boxes
-    $("#business-name-input").val("");
-    $("#business-address-input").val("");
-    $("#user-comment-input").val(""); 
-    
+  // Creates local "temporary" object for holding business data
+  var newBus = {
+    name: busName,
+    address: busAdd,
+    comment: busComm
+  };
+
+  // Uploads business data to the database
+  database.ref().push(newBus);
+
+  // Logs everything to console
+  console.log(busName.name);
+  console.log(busAdd.address); 
+  console.log(busComm.comment);
+
+  // Clears all of the text-boxes
+  $("#business-name-input").val("");
+  $("#business-address-input").val("");
+  $("#user-comment-input").val("");
 });
 
-// 6. Create Firebase event for adding business to the database and html when a user makes an entry
+//Create Firebase event for adding business to the database and add to the html when a user makes an entry
 database.ref().on("child_added", function(childSnapshot) {
     console.log(childSnapshot.val());
-    
+  
     // Store into a variable.
     var busName = childSnapshot.val().name;
     var busAdd = childSnapshot.val().address;
     var busComm = childSnapshot.val().comment;
-    
+  
     // console log business info
     console.log(busName);
     console.log(busAdd);
     console.log(busComm);
 
-    // Create the business info entry on marquee
-    var addBus = $("marquee").append(
-        $("<tj>").text(busName),
-        $("<li>").text(busAdd),
-        $("<li>").text(busComm)
+    // Create the business info entry
+    var newRow = $("marquee").append(
+      $("<tj>").text(busName),
+      $("<p>").text(busAdd),
+      $("<p>").text("[ ― ]" + busComm)
     );
-    
-    // Append the new business info to marquee
-    $("#business-feed > tbody").append(addBus);
+  
+    // Append the new row to the table
+    $("#business-feed > tbody").append(newRow);
 });
 
-// 7. Create controls for contact form
+// Button for adding contact form information to Firebase
 $("#add-contact-btn").on("click", function(event) {
     event.preventDefault();
 
@@ -183,12 +178,12 @@ $("#add-contact-btn").on("click", function(event) {
     $("#contact-comment-input").val("");
 });
 
-// 8. Create Firebase event for adding contact info to the database
+//Create Firebase event for adding contact form information to the database when a user adds an entry
 database.ref().on("child_added", function(childSnapshot) {
     console.log(childSnapshot.val());
 });
 
-// 9. Open and close button functions
+// open and close button functions
 function openForm() {
     document.getElementById("myForm").style.display = "block";
 }
@@ -199,45 +194,21 @@ function closeForm() {
     document.getElementById("myForm").style.display = "none";
 }
 
-// 10. function to animate questions and answers on click
+// function to animate questions and answers on click
 $(document).ready(function() {
-    
+ 
     $('.faq_question').click(function() {
-    
+ 
         if ($(this).parent().is('.open')){
             $(this).closest('.faq').find('.faq_answer_container').animate({'height':'0'},500);
             $(this).closest('.faq').removeClass('open');
-    
+ 
         }else{
             var newHeight =$(this).closest('.faq').find('.faq_answer').height() +'px';
             $(this).closest('.faq').find('.faq_answer_container').animate({'height':newHeight},500);
             $(this).closest('.faq').addClass('open');
         }
-    
+ 
     });
-     
+ 
 });
-
-// 11. Google Maps API
-var APIKey = "AIzaSyDPwAsU2hCjtgCnieRhfwVk7BvOIi7OW2U";
-
-var queryUrl = "https://maps.googleapis.com/maps/api/js?key=" + APIKey + "&callback=initMap";
-var map;
-var directions;
-var displayDirections;
-var latitude;
-var longitude;
-var directionsLatLng;
-
-// 12. Add Map to homepage
-function initMap() {
-    console.log("initMap");
-    map = new google.maps.Map(document.getElementById('map'), {
-            center: { lat: 29.7604, lng: -95.3698},
-            zoom: 8
-    });
-          var marker = new google.maps.Marker({
-    position: { lat: 29.7604, lng: -95.3698},
-    map: map
-  });
-}
