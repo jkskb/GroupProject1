@@ -240,4 +240,5 @@ function initMap() {
     position: { lat: 29.7604, lng: -95.3698},
     map: map
   });
+
 }
