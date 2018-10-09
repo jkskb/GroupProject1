@@ -37,31 +37,33 @@
 <body>
     <!-- banner -->
     <div class="jumbotron text-center banner">
-    <h1>Disaster Source</h1>
-    
-    <div style="background-color:black;color:black;">
+        <h1>Disaster Source</h1>
         
-    <!-- business update popup form -->
-    <button class="open-button" onclick="openForm()">Submit Business Update</button>
-
+        <div style="background-color:black;color:black;">
+            
+            <!-- business update popup form -->
+            <button class="open-button" onclick="openForm()">Submit Business Update</button>
+        </div>
     </div>
 
+    <!-- Business Status Form -->
     <div class="form-popup" id="myForm">
         <form action="/action_page.php" class="form-container">
-    <h2>Business Status</h2>
-        <form>
-            <label for="Name"><b>Business Name</b></label>
-            <input id="business-name-input" type="text" placeholder="Enter name of business" class="print" name="text" required>
+
+            <h2>Business Status</h2>
+
+            <label><b>Business Name</b></label>
+            <input id="business-name-input" type="text" placeholder="Enter name of business" name="text" required>
 
             <br>
 
-            <label for="add"><b>Address</b></label>
-            <input id="business-address-input"  class="print" type="text" placeholder="Enter Address and/or zip code" name="address" required>
+            <label><b>Address</b></label>
+            <input id="business-address-input" type="text" placeholder="Enter Address and/or zip code" name="address" required>
 
-            <label for="comment"><b>Comments</b></label>
-            <textarea  id="user-comment-input" value="print" class="form-control print" type="text" rows="4" placeholder="Please provide as much applicable information as possible (open hours, available supplies, price of gas)" name="Comments" required></textarea>
+            <label><b>Comments</b></label>
+            <textarea  id="user-comment-input" class="form-control" rows="4" placeholder="Please provide as much applicable information as possible (open hours, available supplies, price of gas)" name="Comments" required></textarea>
 
-            <button class="btn btn-primary" id="add-news-btn" onclick="closeForm()">Submit</button>
+            <button class="btn" id="add-news-btn" onclick="closeForm()">Submit</button>
             <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
         </form> 
     </div>
@@ -69,59 +71,57 @@
 
     <!--Weather Feed Box-->
     <div class="row">
-        <div class="column side">
+        <div class="column side" id="left">
 
             <div class="city"></div>
-            <h6><span id="date"></h6>
+            <h6><span id="date"></span></h6>
 
-            <div class="current" id="period"></div>
-            <div class="currentWind" id="wind"></div>
-            <div class="icon" id="icon"></div>
-
-            <br>
-
-            <div class="three" id="period"></div>
-            <div class="threeWind" id="wind"></div>
-            <div class="threeIcon"id="icon"></div>
+            <div class="current period"></div>
+            <div class="currentWind wind"></div>
+            <div class="icon"></div>
 
             <br>
-            
-            <div class="six" id="period"></div>
-            <div class="sixWind" id="wind"></div>
-            <div class="sixIcon" id="icon"></div>
+
+            <div class="three period"></div>
+            <div class="threeWind wind"></div>
+            <div class="threeIcon icon"></div>
 
             <br>
             
-            <div class="nine" id="period"></div>
-            <div class="nineWind" id="wind"></div>
-            <div class="nineIcon" id="icon"></div>
+            <div class="six period"></div>
+            <div class="sixWind wind"></div>
+            <div class="sixIcon icon"></div>
+
+            <br>
+            
+            <div class="nine period"></div>
+            <div class="nineWind wind"></div>
+            <div class="nineIcon icon"></div>
         </div>
 
-    <!-- Map of Business with markers added by users -->
+        <!-- Map of Business with markers added by users -->
         <div class="column middle">
             <h2>Map of Open Businesses</h2>
             <p></p>
-            <div id="map-canvas"></div>
-            <div id="directions-canvas"></div>
-            <div id="places"></div>
-            <div id="more"></div>
-            <div id="map"></div>
-
+            <input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+                <div id="map"></div>
+                <div id="infowindow-content">
+                    <span id="place-name"  class="title"></span>
+                    <br>
+                    <span id="place-id"></span>
+                    <br>
+                    <span id="place-address"></span>
+                </div>
         </div>
-        
+    
+        <!-- Scroll of business statuses -->
         <div class="column side">
             
-            <div class="box">
-                <h2>Business Updates</h2>
+                <h2 id="right">Business Updates</h2>
                 <br>
                 <marquee direction="down" behavior="scroll">
-                        <div class="jumbotron text-center">
-                        <ul></ul>
+                    <div class="box jumbotron text-center"></div>        
                 </marquee>
-            </div>
-
-                <p></p>
-            </div>
         </div>
     </div> 
 
@@ -134,7 +134,7 @@
     <script src="./assets/javascript/app.js"></script>
 
     <!-- link to googleMaps file -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPwAsU2hCjtgCnieRhfwVk7BvOIi7OW2U&callback=initMap"
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDPwAsU2hCjtgCnieRhfwVk7BvOIi7OW2U&libraries=places&callback=initMap"
     async defer></script>
 
 </body>

@@ -5,7 +5,7 @@ body {
 
 .banner {
     padding-top:10px;
-    background-color:#CF3721;
+    background-color:#aadaff;
     height:110px;
     color: black;
 }
@@ -80,7 +80,7 @@ marquee .jumbotron {
     
 /* Add a red background color to the cancel button */
 .form-container .cancel {
-    background-color: #F5BE41;
+    background-color: #ea4335;
 }
 
 /* Add some hover effects to buttons */
@@ -88,12 +88,12 @@ marquee .jumbotron {
     opacity: 1;
 }
 
-#period {
+.period {
     font-weight: bold;
     margin-top: -5px;
 }
 
-#wind, #date {
+.wind, #date {
     font-size: 10px;
 }
 
@@ -126,9 +126,14 @@ body {
     width: 50%;
 }
 
+#left.column.side {
+    text-align: center;
+}
+
 h2 {
     margin-top: 0px;
     margin-bottom: -5px;
+    text-align: center;
 }
 
 /* Clear floats after the columns */
@@ -138,9 +143,9 @@ h2 {
     clear: both;
 }
 
-.box {
-    height: 300px;
-    width:200px;
+tj, li {
+    width: 200px;
+    margin-left: 20px;
 }
 
 tj {
@@ -185,7 +190,12 @@ marquee {
     border-bottom:1px dotted #555; 
 }
 
+#add-news-btn {
+    background: #3878c7
+}
+
 /* CSS for Google Map */
+
 #map {
     height: 500px;
 }
@@ -224,6 +234,41 @@ li:nth-child(odd) {
     width: 100%;
     margin: 5px 0 0 0;
 }
+
+.controls {
+    background-color: #fff;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+    font-family: Roboto;
+    font-size: 15px;
+    font-weight: 300;
+    height: 29px;
+    margin-left: 17px;
+    margin-top: 10px;
+    outline: none;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: 400px;
+}
+
+.controls:focus {
+    border-color: #4d90fe;
+}
+
+.title {
+    font-weight: bold;
+}
+
+#infowindow-content {
+    display: none;
+}
+
+#map #infowindow-content {
+    display: inline;
+} 
+
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {

@@ -23,7 +23,7 @@ body {
 }
 .banner {
     padding-top:10px;
-    background-color:#CF3721;
+    background-color:#aadaff;
     height:110px;
     color: black;
 }
@@ -83,7 +83,7 @@ h1 {
     
 /* Set a style for the submit/login button */
 .form-container .btn {
-    background-color: #258039;
+    background-color: #3878c7;
     color: white;
     padding: 16px 20px;
     border: none;
@@ -95,7 +95,7 @@ h1 {
     
 /* Add a red background color to the cancel button */
 .form-container .cancel {
-    background-color: #F5BE41;
+    background-color: #ea4335;
 }
 
 /* Add some hover effects to buttons */
